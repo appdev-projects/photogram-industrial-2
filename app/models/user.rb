@@ -29,13 +29,13 @@ class User < ApplicationRecord
 
   has_many :comments, foreign_key: :author_id, class_name: "Comment"
   
-  has_many :accepted_sent_follow_requests, -> { where(status: "accepted")}, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :accepted_sent_follow_requests, -> { where( accepted )}, foreign_key: :sender_id, class_name: "FollowRequest"
   
   has_many :follow_requests, foreign_key: :sender, class_name: "FollowRequest"
   
   has_many :recieved_follow_request, foreign_key: :recipient_id, class_name: "FollowRequest"
   
-  has_many :accepted_recieved_follow_request, -> { where(status: "accepted")}, foreign_key: :recipient_id, class_name: "FollowRequest"
+  has_many :accepted_recieved_follow_request, -> { where( accepted )}, foreign_key: :recipient_id, class_name: "FollowRequest"
 
   has_many :likes, foreign_key: :fan_id
   has_many :own_photos, foreign_key: :owner_id, class_name: "Photo"
@@ -51,4 +51,8 @@ class User < ApplicationRecord
   has_many :discover, through: :leadres, source: :liked_photos
 
   validates :username, presence: true, uniqueness: true
+
+  scope :past_week, -> { where(created_at: 1.week.ago...) }
+
+  scope :by_likes, -> { order(likes_count: :desc) }
 end
