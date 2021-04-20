@@ -31,7 +31,7 @@ class User < ApplicationRecord
   
   has_many :accepted_sent_follow_requests, -> { where( accepted )}, foreign_key: :sender_id, class_name: "FollowRequest"
   
-  has_many :follow_requests, foreign_key: :sender, class_name: "FollowRequest"
+  has_many :sent_follow_requests, foreign_key: :sender_id, class_name: "FollowRequest"
   
   has_many :recieved_follow_request, foreign_key: :recipient_id, class_name: "FollowRequest"
   
