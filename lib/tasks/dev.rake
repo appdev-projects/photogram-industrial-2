@@ -2,6 +2,9 @@ task sample_data: :environment do
   p "Creating sample data"
 
   if Rails.env.development?
+    Comment.destroy_all
+    Like.destroy_all
+    Photo.destroy_all
     FollowRequest.destroy_all
     User.destroy_all
   end
@@ -60,8 +63,8 @@ task sample_data: :environment do
     end
   end
 
-  ending = Time.now
-  p "It took #{(ending - starting).to_i} seconds to create sample data."
+  # ending = Time.now
+  # p "It took #{(ending - starting).to_i} seconds to create sample data."
   p "There are now #{User.count} users."
   p "There are now #{FollowRequest.count} follow requests."
   p "There are now #{Photo.count} photos."
