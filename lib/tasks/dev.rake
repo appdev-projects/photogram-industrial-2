@@ -1,4 +1,6 @@
+desc "Fill the database tables with some sample data"
 task sample_data: :environment do
+  starting = Time.now
 
   FollowRequest.delete_all
   Comment.delete_all
@@ -6,52 +8,60 @@ task sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  #Users
   12.times do
-  username = Faker::Name.unique.first_name
-  email = username+"@example.com"
-  password = "password"
-  random_boolean = [true, false].sample
-  
-  new_user = User.new
-  new_user.username = username
-  new_user.email = email
-  new_user.password = password
-  new_user.private = random_boolean
-
-  new_user.save
+    name = Faker::Name.first_name
+    User.create(
+      email: "#{name}@example.com",
+      password: "password",
+      username: name.downcase,
+      private: [true, false].sample,
+    )
   end
 
-  #Photos
-  50.times do
-    
-    ph = Photo.create(caption: Faker::Quote.yoda,
-      image: Faker::Avatar.image,
-      owner_id: User.all.sample.id )
+  users = User.all
+
+  users.each do |first_user|
+    users.each do |second_user|
+      if rand < 0.75
+        first_user.sent_follow_requests.create(
+          recipient: second_user,
+          status: FollowRequest.statuses.values.sample
+        )
+      end
+
+      if rand < 0.75
+        second_user.sent_follow_requests.create(
+          recipient: first_user,
+          status: FollowRequest.statuses.values.sample
+        )
+      end
+    end
   end
 
-  #Follow_requests
+  users.each do |user|
+    rand(15).times do
+      photo = user.own_photos.create(
+        caption: Faker::Quote.jack_handey,
+        image: "https://robohash.org/#{rand(9999)}"
+      )
 
-  100.times do
-    f = FollowRequest.create(recipient_id: User.all.sample.id, sender_id: User.all.sample.id, status: FollowRequest.statuses.values.sample)
+      user.followers.each do |follower|
+        if rand < 0.5
+          photo.fans << follower
+        end
+
+        if rand < 0.25
+          photo.comments.create(
+            body: Faker::Quote.jack_handey,
+            author: follower
+          )
+        end
+      end
+    end
   end
 
-  #Likes
-
-  100.times do
-    l = Like.create(fan_id: User.all.sample.id, 
-      photo_id: Photo.all.sample.id) 
-  end
-
-    #Comments
-
-  70.times do
-    c = Comment.create(author_id: User.all.sample.id, 
-      photo_id: Photo.all.sample.id, body: Faker::Quote.yoda)
-  end    
-
-
-
+  ending = Time.now
+  p "It took #{(ending - starting).to_i} seconds to create sample data."
   p "There are now #{User.count} users."
   p "There are now #{FollowRequest.count} follow requests."
   p "There are now #{Photo.count} photos."
