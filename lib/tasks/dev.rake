@@ -9,12 +9,16 @@ task sample_data: :environment do
 
   p "Creating sample data"
   starting = Time.now
-  12.times do
-    new_username = Faker::Internet.username
-    new_email = Faker::Internet.email
-    new_password = Faker::Internet.password
-    user = User.new(:username => new_username, :email => new_email, :password => new_password, :private => [true, false].sample)
-    user.save
+  usernames = Array.new { Faker::Internet.username }
+  usernames << "alice"
+  usernames << "bobs"
+  usernames.each do |username|
+    User.create(
+      email: "#{username}@example.com",
+      password: "password",
+      username: username.downcase,
+      private: [true, false].sample
+    )
     # p u.errors.full_messages
   end
 
