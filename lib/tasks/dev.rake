@@ -8,7 +8,12 @@ task sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  12.times do
+  usernames = Array.new {Faker::Name.first_name}
+  usernames << "alice"
+  usernames << "bob"
+
+  10.times do |username|
+    
     name = Faker::Name.first_name
     User.create(
       email: "#{name}@example.com",
