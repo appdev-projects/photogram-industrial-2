@@ -27,17 +27,15 @@
         <li class="nav-item">
           <%= link_to "Following", following_path(@user.username), class: "nav-link"%>
         </li>
-
       </ul>
   </div>
 </div>
 
 
-<%= @user.own_photos.count %>
-  <% @user.own_photos.each do |zeb| %>
+  <%= @user.liked_photos.count %>
+  <% @user.liked_photos.each do |gir| %>
 
-  
-      <%= render "photos/photo", photo: zeb %>
+  <%= render "photos/photo", photo: gir %>
 
 <% end %>
   

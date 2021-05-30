@@ -33,10 +33,9 @@
 </div>
 
 
-<%= @user.own_photos.count %>
-  <% @user.own_photos.each do |zeb| %>
+<%= @user.feed.count %>
+  <% @user.feed.each do |zeb| %>
 
-  
       <%= render "photos/photo", photo: zeb %>
 
 <% end %>

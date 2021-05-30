@@ -33,11 +33,17 @@
 </div>
 
 
-<%= @user.own_photos.count %>
-  <% @user.own_photos.each do |zeb| %>
+<%= @user.leaders.count %>
+
+<div class="col-md-6 offset-md-3">
+<ul class="list-group">
 
   
-      <%= render "photos/photo", photo: zeb %>
+  <% @user.leaders.each do |leader| %>
+    <li class="list-group-item"><%= link_to leader.username, following_path(leader.username)  %></li>
+  <% end %>
 
-<% end %>
+</ul>
+</div>
+
   
