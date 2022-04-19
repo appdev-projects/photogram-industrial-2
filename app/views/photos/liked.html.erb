@@ -13,16 +13,8 @@
 <li>
   <%= link_to "Liked Photos", liked_photos_path(@user.username), class: "nav-link" %>
 </li>
-<li>
-  <%= link_to "Feed", liked_photos_path(@user.username), class: "nav-link" %>
-</li>
-<li>
-  <%= link_to "Followers", liked_photos_path(@user.username), class: "nav-link" %>
-</li>
-<li>
-  <%= link_to "Following", liked_photos_path(@user.username), class: "nav-link" %>
-</li>
- 
+  <a class="nav-link" href="#">Feed</a>
+  <a class="nav-link disabled">Following</a>
 </nav>
 </div>
 </div>
