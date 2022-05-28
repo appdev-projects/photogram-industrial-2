@@ -62,10 +62,14 @@ ActiveRecord::Schema.define(version: 2022_05_23_164029) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.citext "username"
     t.boolean "private"
     t.integer "likes_count", default: 0
     t.integer "comments_count", default: 0
+    t.text "bio"
+    t.string "website"
+    t.string "avatar_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

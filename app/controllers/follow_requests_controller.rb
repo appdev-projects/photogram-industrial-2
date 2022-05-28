@@ -68,3 +68,4 @@ class FollowRequestsController < ApplicationController
       params.require(:follow_request).permit(:recipient_id, :sender_id, :status)
     end
 end
+
