@@ -40,6 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.text :bio
       t.string :website
       t.string :avatar_image
+      t.integer :photos_count
 
       t.timestamps null: false
     end

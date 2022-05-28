@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_164029) do
     t.text "bio"
     t.string "website"
     t.string "avatar_image"
+    t.integer "photos_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
