@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # appdev Gems
 gem 'faker'
+gem 'devise'
 group :development do
   gem 'annotate'
   gem 'awesome_print'
@@ -66,6 +67,7 @@ group :development do
   gem 'htmlbeautifier'
   gem 'pry-rails'
   gem 'rack-canonical-host'
+  gem 'rails_db'
   gem 'rails-erd'
   gem 'rollbar'
   gem 'rufo'
