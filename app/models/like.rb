@@ -19,6 +19,9 @@
 #  fk_rails_...  (photo_id => photos.id)
 #
 class Like < ApplicationRecord
-  belongs_to :fan, class_name: "User"
-  belongs_to :photo
+  #dooood, we can add a coutner to the belongs_to 
+  # in order for the counter_cache to be valid, there must be a column in the "User" table with the name likes_count
+  # if it is not present it will not work!!! Convetion ALWAYS WINS!!!
+  belongs_to :fan, class_name: "User", counter_cache: true
+  belongs_to :photo, counter_cache: true
 end
