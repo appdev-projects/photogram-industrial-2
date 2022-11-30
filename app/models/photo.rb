@@ -27,4 +27,7 @@ class Photo < ApplicationRecord
   has_many :comments
 
   has_many :likes
+
+  #we don't need source because we are using convetion and in like.rb we already have :fan, so we do not need to specify it here
+  has_many :fans, through: :likes
 end
