@@ -37,11 +37,12 @@ class User < ApplicationRecord
   
 # introducing the PROC, a nameless block of code that we can use... in this case we are calling it on the collection of sent_follow_request
 # this will give us all of the users that have a status of accepted.. see columns !
-  has_many :accepted_sent_follow_requests, -> {where(status:"accpeted")}, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :accepted_sent_follow_requests, -> {accepted}, foreign_key: :sender_id, class_name: "FollowRequest"
 
   has_many :received_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
 
-  has_many :accepted_received_follow_requests, -> {where(status:"accepted")}, foreign_key: :recipient_id, class_name: "FollowRequest"
+  # we are literally calling the enum from FollowRequests and now we can just include it here to check for accepted!!!!
+  has_many :accepted_received_follow_requests, -> {accepted}, foreign_key: :recipient_id, class_name: "FollowRequest"
 
   has_many :likes, foreign_key: :fan_id
 
