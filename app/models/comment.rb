@@ -20,6 +20,10 @@
 #  fk_rails_...  (photo_id => photos.id)
 #
 class Comment < ApplicationRecord
+  #these are validated by default rember that!!!
   belongs_to :author, class_name: "User", counter_cache: true
   belongs_to :photo, counter_cache: true
+
+  #dood seriously you need to read validations!!
+  validates :body, presence: true
 end

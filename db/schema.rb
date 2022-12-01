@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_29_171711) do
+ActiveRecord::Schema.define(version: 2022_12_01_162753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_11_29_171711) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.citext "username"
-    t.boolean "private"
+    t.boolean "private", default: true
     t.integer "likes_count"
     t.integer "comments_count"
     t.datetime "created_at", precision: 6, null: false

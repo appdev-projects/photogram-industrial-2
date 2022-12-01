@@ -30,4 +30,8 @@ class Photo < ApplicationRecord
 
   #we don't need source because we are using convetion and in like.rb we already have :fan, so we do not need to specify it here
   has_many :fans, through: :likes
+
+  validates :caption, presence: true
+
+  validates :image, presence: true
 end
