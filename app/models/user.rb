@@ -62,4 +62,14 @@ class User < ApplicationRecord
   has_many :discover, through: :leaders, source: :liked_photos
 
   validates :username, presence: true, uniqueness: true
+
+  # SCOPES!!! we use scopes to add logic whenever we see it repeated 2-3 times in our models
+  # we can later chain them together and manipulate them whenever we want to update their funcitonality 
+  # We put then in PROCS again so rememver that is how we use them!
+  # see github for how to use scopes
+
+  #use it on the Active Recodord ex: Photo.past_week ORRRRR on a association ex: current_user.discover.bylikes 
+  scope :past_week, -> { where(created_at: 1.week.ago...) }
+
+  scope :by_likes, -> { order(likes_count: :desc) }
 end
