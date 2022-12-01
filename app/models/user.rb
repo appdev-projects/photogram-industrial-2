@@ -49,11 +49,16 @@ class User < ApplicationRecord
 
   has_many :liked_photos, through: :likes, :source :photo
 
-  has_many :leaders, through: :accepted_sent_follow_requests, :source :recipient 
+  has_many :leaders, through: :accepted_sent_follow_requests, source: :recipient 
 
-  has_many :followers, through: :accepted_received_follow_requests, :source :sender
+  has_many :followers, through: :accepted_received_follow_requests, source: :sender
 
-  #ENGLISH: we 
-  has_many :feed, through: :leaders, :source :own_photos
+  #ENGLISH: we get our :feed through: our :leaders and the :source that we want is their :own_photos because the whole point of :feed is to
+  # see what the :photos of our :leaders is!!!!
+  has_many :feed, through: :leaders, source: :own_photos
+
+  #we are not going through followers because we do not care about what they are likeing
+  # and we can only really show one :likes_photos 
+  has_many :discover, throguh: :leaders, soruce: :liked_photos
 
 end
