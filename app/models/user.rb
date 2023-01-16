@@ -51,7 +51,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
 
-  # app/models/photo.rb
+  # app/models/photo.rb......Should these be in the models folder??
 
   scope :past_week, -> { where(created_at: 1.week.ago...) }
 

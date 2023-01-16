@@ -1,4 +1,4 @@
-task :sample_data do
+task sample_data: :environment do
   p "Creating sample data"
 
   12.times do
