@@ -50,4 +50,10 @@ class User < ApplicationRecord
   has_many :discover, through: :leaders, source: :liked_photos 
 
   validates :username, presence: true, uniqueness: true
+
+  # app/models/photo.rb
+
+  scope :past_week, -> { where(created_at: 1.week.ago...) }
+
+  scope :by_likes, -> { order(likes_count: :desc) }
 end
