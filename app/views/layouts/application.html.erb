@@ -21,8 +21,8 @@
       <% if notice.present? %>
         <%= render "shared/flash", message: notice, css_class: "success"%>
       <%end%>
-       <% if notice.present? %>
-        <%= render "shared/flash", message: notice, css_class: "danger"%>
+       <% if alert.present? %>
+        <%= render "shared/flash", message: alert, css_class: "danger"%>
       <%end%>
     </div>
 
