@@ -4,6 +4,9 @@ task sample_data: :environment do
 
   if Rails.env.development?
     FollowRequest.destroy_all
+    Like.destroy_all
+    Comment.destroy_all
+    Photo.destroy_all
     User.destroy_all
   end
 
@@ -16,9 +19,8 @@ task sample_data: :environment do
       private: [true, false].sample
     )
   end
-  p "#{User.count} users have been created."
 
-  users = User.all 
+users = User.all 
 
   users.each do |first_user|
     users.each do |second_user|
@@ -36,9 +38,6 @@ task sample_data: :environment do
       end
     end
   end
-
-  p "#{FollowRequest.count} follow request have been created."
-end
 
 users.each do |user|
   rand(15).times do
@@ -60,6 +59,14 @@ users.each do |user|
       end
     end 
   end
+end
+ending = Time.now
+#p "It took #{(ending - starting).to_i} seconds to create sample data."
+p "There are now #{User.count} users."
+p "There are now #{FollowRequest.count} follow requests."
+p "There are now #{Photo.count} photos."
+p "There are now #{Like.count} likes."
+p "There are now #{Comment.count} comments."
 end
 
 
