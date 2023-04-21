@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   has_many :recieved_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
 
-  has_many :accepted_recieved_follow_requests, -> {where(status: "accepted")} foreign_key: :recipient_id, class_name: "FollowRequest"
+  has_many :accepted_recieved_follow_requests, --> {where(status: "accepted")} foreign_key: :recipient_id, class_name: "FollowRequest"
 
   has_many :likes, foreign_key: :fan_id
 
