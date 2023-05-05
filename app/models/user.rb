@@ -8,7 +8,7 @@
 #  encrypted_password     :string           default(""), not null
 #  likes_count            :integer          default(0)
 #  photos_count           :integer          default(0)
-#  private                :boolean
+#  private                :boolean          default(TRUE)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -53,8 +53,4 @@ class User < ApplicationRecord
   has_many :discover, through: :leaders, source: :liked_photos
 
   validates :username, presence: true, uniqueness: true
-
-  scope :past_week, -> { where(created_at: 1.week.ago...) }
-
-  scope :by_likes, -> { order(likes_count: :desc) }
 end
