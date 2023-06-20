@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2023_06_18_170045) do
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "follow_requests", "users", column: "recipient_id"
   add_foreign_key "follow_requests", "users", column: "sender_id"
+  git
   add_foreign_key "likes", "users", column: "fan_id"
-  add_foreign_key "likes", "users", column: "photo_id"
   add_foreign_key "photos", "users", column: "owner_id"
 end

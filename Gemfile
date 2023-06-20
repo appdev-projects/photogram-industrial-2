@@ -27,6 +27,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem "carrierwave"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'faker'
+gem 'devise'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -46,30 +54,6 @@ group :development do
   gem 'spring'
 
   gem 'annotate'
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
-  gem 'webmock'
-  gem 'rspec-html-matchers'
-end
-
-gem "carrierwave"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# appdev Gems
-gem 'faker'
-gem 'devise'
-group :development do
-  gem 'annotate'
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -87,4 +71,16 @@ group :development do
   gem "rubocop-rspec", require: false
   gem 'skylight'
   gem 'web_git', github: 'firstdraft/web_git'
+end
+
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'webmock'
+  gem 'rspec-html-matchers'
 end

@@ -16,7 +16,7 @@
 # Foreign Keys
 #
 #  fk_rails_...  (fan_id => users.id)
-#  fk_rails_...  (photo_id => users.id)
+#  fk_rails_...  (photo_id => photos.id)
 #
 require "test_helper"
 
