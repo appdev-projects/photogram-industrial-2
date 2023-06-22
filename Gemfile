@@ -60,6 +60,7 @@ group :development do
   gem 'bullet'
   gem 'htmlbeautifier'
   gem 'pry-rails'
+  gem 'jquery-rails', '~> 4.5', '>= 4.5.1'
   gem 'rack-canonical-host'
   gem 'rails_db'
   gem 'rails-erd'
