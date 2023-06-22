@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md6 offset-md-3">
 
@@ -21,9 +22,7 @@
   </div>
 </div>
 
-
-<%= current_user.own_photos.count %>
-
+<%= current_user.liked_photos.count %>
 <% current_user.own_photos.each do |photo| %>
   <%= render "photos/photo", photo: photo %>
 <% end %>
