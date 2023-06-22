@@ -27,6 +27,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem "carrierwave"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'faker'
+gem 'devise'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -44,6 +52,26 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'annotate'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
+  gem 'htmlbeautifier'
+  gem 'pry-rails'
+  gem 'jquery-rails', '~> 4.5', '>= 4.5.1'
+  gem 'rack-canonical-host'
+  gem 'rails_db'
+  gem 'rails-erd'
+  gem 'rollbar'
+  gem 'rufo'
+  gem "standard", require: false
+  gem 'solargraph'
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem 'skylight'
+  gem 'web_git', github: 'firstdraft/web_git'
 end
 
 group :test do
@@ -56,33 +84,4 @@ group :test do
   gem 'rspec-rails'
   gem 'webmock'
   gem 'rspec-html-matchers'
-end
-
-gem "carrierwave"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# appdev Gems
-gem 'faker'
-gem 'devise'
-group :development do
-  gem 'annotate'
-  gem 'awesome_print'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet'
-  gem 'htmlbeautifier'
-  gem 'pry-rails'
-  gem 'rack-canonical-host'
-  gem 'rails_db'
-  gem 'rails-erd'
-  gem 'rollbar'
-  gem 'rufo'
-  gem "standard", require: false
-  gem 'solargraph'
-  gem "rubocop-rails", require: false
-  gem "rubocop-rspec", require: false
-  gem 'skylight'
-  gem 'web_git', github: 'firstdraft/web_git'
 end
