@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
 
   has_many :own_photos, class_name: "Photo", foreign_key: "owner_id"
+  has_many :comments, foreign_key: "author_id"
 end
